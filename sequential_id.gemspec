@@ -8,8 +8,11 @@ Gem::Specification.new do |spec|
   spec.version       = SequentialId::VERSION
   spec.authors       = ["Austin Lin"]
   spec.email         = ["austin@austinylin.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Generates scoped, threadsafe sequential ids for 
+                          ActiveRecord models}
+  spec.summary       = %q{SequentialID enables the use of scoped, threadsafe 
+                          sequential ids for ActiveRecord models using a 
+                          seperate sequence table and row-level locking}
   spec.homepage      = ""
   spec.license       = "MIT"
 
