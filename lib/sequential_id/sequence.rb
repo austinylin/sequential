@@ -1,5 +1,5 @@
-module SequentialID
+module SequentialId
   class Sequence < ActiveRecord::Base
-    set_table_name :seq_id_sequences
+    self.table_name = 'seq_id_sequences'
   end
 end

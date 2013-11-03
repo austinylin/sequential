@@ -1,4 +1,4 @@
-module SequentialID
+module SequentialId
   class Generator
     attr_reader :record, :scope, :column, :start_at, :skip
 
@@ -11,11 +11,11 @@ module SequentialID
     end
 
     def set
-      sequence = Sequence.where(
+      sequence = SequentialId::Sequence.where(
         model: record.class.name, 
         scope: scope.to_s, 
         scope_id: record.send(scope.to_sym)
-      ).first_or_create(value: start_at)
+      ).first_or_create(value: start_at - 1)
       
       unless id_set? || skip?
         sequence.with_lock do

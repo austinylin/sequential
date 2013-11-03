@@ -1,4 +1,4 @@
-class CreateSeqIDSequences < ActiveRecord::Migration
+class CreateSeqIdSequences < ActiveRecord::Migration
   def change
     create_table(:seq_id_sequences) do |t|
       t.string  :model

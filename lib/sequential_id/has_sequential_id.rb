@@ -1,8 +1,8 @@
 require 'active_support/core_ext/hash/slice'
 require 'active_support/core_ext/class/attribute_accessors'
 
-module SequentialID
-  module HasSequentialID
+module SequentialId
+  module HasSequentialId
     def self.included(base)
       base.extend ClassMethods
     end
@@ -35,13 +35,13 @@ module SequentialID
         self.sequence_options = options
         
         before_save :set_sequential_id
-        include SequentialID::HasSequentialID::InstanceMethods
+        include SequentialId::HasSequentialId::InstanceMethods
       end
     end
     
     module InstanceMethods
       def set_sequential_id
-        SequentialID::Generator.new(self, self.class.sequence_options).set
+        SequentialId::Generator.new(self, self.class.sequence_options).set
       end
     end
   end
