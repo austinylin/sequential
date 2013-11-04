@@ -34,7 +34,7 @@ module SequentialId
         cattr_accessor :sequence_options
         self.sequence_options = options
         
-        before_save :set_sequential_id
+        before_create :set_sequential_id
         include SequentialId::HasSequentialId::InstanceMethods
       end
     end
