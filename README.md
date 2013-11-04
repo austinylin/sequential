@@ -1,4 +1,5 @@
-# SequentialId
+# Sequential ID
+[![Build Status](https://travis-ci.org/austinylin/sequential_id.png?branch=master)](https://travis-ci.org/austinylin/sequential_id)
 
 Generates scoped, threadsafe sequential ids for ActiveRecord models.
 
