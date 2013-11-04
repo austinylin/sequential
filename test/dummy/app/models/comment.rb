@@ -1,4 +1,4 @@
 class Comment < ActiveRecord::Base
-  has_sequential_id column: :absolute_number
-  has_sequential_id scope: :post_id
+  sequential column: :absolute_number
+  sequential scope: :post_id
 end

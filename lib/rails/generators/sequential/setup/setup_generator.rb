@@ -1,19 +1,18 @@
 require 'rails/generators/active_record'
 
-
-module SequentialId
+module Sequential
   module Generators
     class SetupGenerator < ActiveRecord::Generators::Base
 
       # Ignore the required name param
       argument :name, type: :string, default: 'random_name'
       
-      desc 'Creates a migration to create the seq_id_sequences table'
+      desc 'Creates a migration to create the sequential table'
 
       source_root File.expand_path("../templates", __FILE__)
  
       def create_migration 
-        migration_template "migration.rb", "db/migrate/create_seq_id_sequences.rb"
+        migration_template "migration.rb", "db/migrate/create_sequential.rb"
       end
     end
   end

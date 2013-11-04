@@ -1,7 +1,7 @@
-# Sequential ID
-[![Build Status](https://travis-ci.org/austinylin/sequential_id.png?branch=master)](https://travis-ci.org/austinylin/sequential_id)
+# Sequential
+[![Build Status](https://travis-ci.org/austinylin/sequential.png?branch=master)](https://travis-ci.org/austinylin/sequential)
 
-Generates scoped, threadsafe sequential ids for ActiveRecord models.
+Generates scoped, threadsafe sequences for ActiveRecord models.
 
 Based on [Sequenced](https://github.com/djreimer/sequenced) by 
 [Derrick Reimer](https://github.com/djreimer)
@@ -10,7 +10,7 @@ Based on [Sequenced](https://github.com/djreimer/sequenced) by
 
 Add this line to your application's Gemfile:
 
-    gem 'sequential_id'
+    gem 'sequential'
 
 And then execute:
 
@@ -18,15 +18,16 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install sequential_id
+    $ gem install sequential
 
 ## Usage
 
 Setup the database table:
 
-    rails g sequential_id:setup
+    rails g sequential:setup
 
-Add a column to your model to hold the sequential id, in a migration:
+Add a column to your model to hold the sequence (by default sequential_id)
+, in a migration:
 
     add_column :model_name, :sequential_id, :integer
 
@@ -36,7 +37,7 @@ Then run the migrations:
 
 Now add the following to your model:
 
-    has_sequential_id scope: :name_of_attribute_to_scope_on
+    sequential scope: :name_of_attribute_to_scope_on
 
 ## Contributing
 

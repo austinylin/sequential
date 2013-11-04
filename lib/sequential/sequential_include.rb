@@ -1,8 +1,8 @@
 require 'active_support/core_ext/hash/slice'
 require 'active_support/core_ext/class/attribute_accessors'
 
-module SequentialId
-  module HasSequentialId
+module Sequential
+  module SequentialInclude
     def self.included(base)
       base.extend ClassMethods
     end
@@ -13,12 +13,12 @@ module SequentialId
       #
       # options - The Hash of options for configuration:
       #           :scope    - The Symbol representing the columm on which the
-      #                       sequential ID should be scoped (default: nil)
+      #                       sequence should be scoped (default: nil)
       #           :column   - The Symbol representing the column that stores the
-      #                       sequential ID (default: :sequential_id)
+      #                       sequence (default: :sequential_id)
       #           :start_at - The Integer value at which the sequence should
       #                       start (default: 1)
-      #           :skip     - Skips the sequential ID generation when the lambda
+      #           :skip     - Skips the sequence generation when the lambda
       #                       expression evaluates to nil. Gets passed the
       #                       model object
       #
@@ -26,25 +26,25 @@ module SequentialId
       #
       #   class Answer < ActiveRecord::Base
       #     belongs_to :question
-      #     has_sequential_id scope: :question_id
+      #     sequential scope: :question_id
       #   end
       #
       # Returns nothing.
-      def has_sequential_id(options = {})
+      def sequential(options = {})
         cattr_accessor :sequence_options
 
         (self.sequence_options ||= []) << options
 
-        before_create :set_sequential_ids
+        before_create :set_sequential_values
 
-        include SequentialId::HasSequentialId::InstanceMethods
+        include Sequential::SequentialInclude::InstanceMethods
       end
     end
 
     module InstanceMethods
-      def set_sequential_ids
+      def set_sequential_values
         self.sequence_options.each do |seq_opts|
-          SequentialId::Generator.new(self, seq_opts).set
+          Sequential::Generator.new(self, seq_opts).set
         end
       end
     end

@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'sequential_id/version'
+require 'sequential/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "sequential_id"
-  spec.version       = SequentialId::VERSION
+  spec.name          = "sequential"
+  spec.version       = Sequential::VERSION
   spec.authors       = ["Austin Lin"]
   spec.email         = ["austin@austinylin.com"]
-  spec.description   = %q{Generates scoped, threadsafe sequential ids for 
+  spec.description   = %q{Generates scoped, threadsafe sequences for 
                           ActiveRecord models}
-  spec.summary       = %q{SequentialID enables the use of scoped, threadsafe 
-                          sequential ids for ActiveRecord models using a 
+  spec.summary       = %q{Sequential enables the use of scoped, threadsafe 
+                          sequences for ActiveRecord models using a 
                           seperate sequence table and row-level locking}
   spec.homepage      = ""
   spec.license       = "MIT"
