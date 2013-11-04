@@ -6,8 +6,8 @@ require 'sequential/version'
 Gem::Specification.new do |spec|
   spec.name          = "sequential"
   spec.version       = Sequential::VERSION
-  spec.authors       = ["Austin Lin"]
-  spec.email         = ["austin@austinylin.com"]
+  spec.authors       = ["Austin Lin", "Shalev NessAiver"]
+  spec.email         = ["austin@austinylin.com", "pugiox@gmail.com"]
   spec.description   = %q{Generates scoped, threadsafe sequences for 
                           ActiveRecord models}
   spec.summary       = %q{Sequential enables the use of scoped, threadsafe 
