@@ -1,6 +1,9 @@
 # SequentialId
 
-TODO: Write a gem description
+Generates scoped, threadsafe sequential ids for ActiveRecord models.
+
+Based on [Sequenced](https://github.com/djreimer/sequenced) by 
+[Derrick Reimer](https://github.com/djreimer)
 
 ## Installation
 
@@ -18,7 +21,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Setup the database table:
+
+    rails g sequential_id:setup
+
+Add a column to your model to hold the sequential id, in a migration:
+
+    add_column :model_name, :sequential_id, :integer
+
+Then run the migrations:
+
+    rake db:migrate
+
+Now add the following to your model:
+
+    has_sequential_id scope: :name_of_attribute_to_scope_on
 
 ## Contributing
 
