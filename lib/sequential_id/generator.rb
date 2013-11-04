@@ -11,13 +11,13 @@ module SequentialId
     end
 
     def set
-      sequence = SequentialId::Sequence.where(
-        model: record.class.name, 
-        scope: scope.to_s, 
-        scope_id: record.send(scope.to_sym)
-      ).first_or_create(value: start_at - 1)
-      
       unless id_set? || skip?
+        sequence = SequentialId::Sequence.where(
+          model: record.class.name, 
+          scope: scope.to_s, 
+          scope_id: record.send(scope.to_sym)
+        ).first_or_create(value: start_at - 1)
+      
         sequence.with_lock do
           sequence.value += 1
           record.send(:"#{column}=", sequence.value)
