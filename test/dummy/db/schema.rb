@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131104000212) do
+ActiveRecord::Schema.define(version: 20131104020142) do
+
+  create_table "comments", force: true do |t|
+    t.string   "title"
+    t.integer  "absolute_number"
+    t.integer  "sequential_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "invoices", force: true do |t|
     t.integer "client_id"
@@ -21,6 +29,31 @@ ActiveRecord::Schema.define(version: 20131104000212) do
   create_table "posts", force: true do |t|
     t.integer "author_id"
     t.integer "sequential_id"
+  end
+
+  create_table "products", force: true do |t|
+    t.integer  "price"
+    t.integer  "sequential_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "seq_id_sequences", force: true do |t|
+    t.string   "model"
+    t.string   "scope"
+    t.string   "column"
+    t.integer  "scope_id"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stories", force: true do |t|
+    t.string   "title"
+    t.integer  "story_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
