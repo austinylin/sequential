@@ -54,4 +54,19 @@ class HasSequentialIdTest < ActiveSupport::TestCase
     s = Story.create
     assert_equal 2, s.story_number
   end
+
+  test 'multiple sequential columns' do
+    c = Comment.create(post_id: 1)
+    assert_equal 1, c.absolute_number
+    assert_equal 1, c.sequential_id
+
+    c = Comment.create(post_id: 1)
+    assert_equal 2, c.absolute_number
+    assert_equal 2, c.sequential_id
+
+    c = Comment.create(post_id: 2)
+    assert_equal 3, c.absolute_number
+    assert_equal 1, c.sequential_id
+  end
+
 end

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20131104020142) do
     t.string   "title"
     t.integer  "absolute_number"
     t.integer  "sequential_id"
+    t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
