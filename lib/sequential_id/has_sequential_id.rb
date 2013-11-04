@@ -6,9 +6,9 @@ module SequentialId
     def self.included(base)
       base.extend ClassMethods
     end
-    
+
     module ClassMethods
-      # Public: Defines ActiveRecord callbacks to set a sequential ID scoped 
+      # Public: Defines ActiveRecord callbacks to set a sequential ID scoped
       # on a specific class.
       #
       # options - The Hash of options for configuration:
@@ -23,7 +23,7 @@ module SequentialId
       #                       model object
       #
       # Examples
-      #   
+      #
       #   class Answer < ActiveRecord::Base
       #     belongs_to :question
       #     has_sequential_id scope: :question_id
@@ -32,16 +32,20 @@ module SequentialId
       # Returns nothing.
       def has_sequential_id(options = {})
         cattr_accessor :sequence_options
-        self.sequence_options = options
-        
-        before_create :set_sequential_id
+
+        (self.sequence_options ||= []) << options
+
+        before_create :set_sequential_ids
+
         include SequentialId::HasSequentialId::InstanceMethods
       end
     end
-    
+
     module InstanceMethods
-      def set_sequential_id
-        SequentialId::Generator.new(self, self.class.sequence_options).set
+      def set_sequential_ids
+        self.sequence_options.each do |seq_opts|
+          SequentialId::Generator.new(self, seq_opts).set
+        end
       end
     end
   end
