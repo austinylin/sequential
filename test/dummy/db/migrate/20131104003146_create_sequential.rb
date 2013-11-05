@@ -4,7 +4,7 @@ class CreateSequential < ActiveRecord::Migration
       t.string  :model
       t.string  :column
       t.string  :scope
-      t.integer :scope_value
+      t.string  :scope_value
       t.integer :value
       t.timestamps
     end

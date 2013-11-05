@@ -18,7 +18,7 @@ module Sequential
         }
 
         where_opts.merge!(  scope: scope.to_s,
-                            scope_value: record.send(scope.to_sym),
+                            scope_value: record.send(scope.to_sym).to_s,
                          ) if scope
 
         sequence = Sequential::Sequence.where(where_opts).
