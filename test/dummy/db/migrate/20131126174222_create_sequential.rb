@@ -8,5 +8,7 @@ class CreateSequential < ActiveRecord::Migration
       t.integer :value
       t.timestamps
     end
+
+    add_index :sequential, [:model, :column, :scope, :scope_value], unique: true
   end
 end
