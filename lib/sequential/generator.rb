@@ -1,19 +1,20 @@
 module Sequential
   class Generator
-    attr_reader :record, :scope, :column, :start_at, :skip
+    attr_reader :record, :scope, :column, :start_at, :skip, :use_sti_base_class
 
     def initialize(record, options = {})
-      @record   = record
-      @scope    = options[:scope]
-      @column   = (options[:column] || :sequential_id).to_sym
-      @start_at = options[:start_at] || 1
-      @skip     = options[:skip]
+      @record             = record
+      @scope              = options[:scope]
+      @column             = (options[:column] || :sequential_id).to_sym
+      @start_at           = options[:start_at] || 1
+      @skip               = options[:skip]
+      @use_sti_base_class = options[:use_sti_base_class] || false
     end
 
     def set
       unless id_set? || skip?
         where_opts = {
-          model:  record.class.name,
+          model:  use_sti_base_class ? record.class.base_class.name : record.class.name,
           column: column
         }
 

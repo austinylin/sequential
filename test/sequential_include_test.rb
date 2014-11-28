@@ -74,4 +74,10 @@ class SequentialIncludeTest < ActiveSupport::TestCase
     assert_equal 1, c.sequential_id
   end
 
+  test 'use sti base class' do
+    admin = Administrator.create
+    author = Author.create
+    assert_equal 1, admin.user_number
+    assert_equal 2, author.user_number
+  end
 end
